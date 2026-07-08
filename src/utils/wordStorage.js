@@ -10,10 +10,26 @@ export function getWords() {
 export function addWord(word) {
   const words = getWords();
 
-  words.push(word);
+  words.push({
+        id: crypto.randomUUID(),
+            ...word
+        }
+    );
 
-  localStorage.setItem(
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(words)
+    );
+}
+
+export function deleteWord(id)
+{
+    const words = getWords();
+
+    const filteredWords = words.filter(word => word.id !== id);
+
+    localStorage.setItem(
     STORAGE_KEY,
-    JSON.stringify(words)
-  );
+    JSON.stringify(filteredWords)
+    );
 }
