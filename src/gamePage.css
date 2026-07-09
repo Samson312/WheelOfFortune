@@ -1,0 +1,31 @@
+.letter {
+    margin: 5px;
+    border: 1px solid black;
+    font-size: 20px;
+}
+
+.correct {
+    background-color: green;
+}
+
+.wrong {
+    background-color: red;
+}
+
+.wordContainer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.singleWord
+{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 50px;
+}
