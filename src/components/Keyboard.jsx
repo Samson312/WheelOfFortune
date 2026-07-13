@@ -1,32 +1,23 @@
-
-function Keyboard({ onLetterClick, guessedLetters, word }) {
+function Keyboard({ onLetterClick, getLetterStatus }) {
 
     const alphabet = "AĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹŻ".split("");
 
-    function getLetterClass(letter){
-        if (!guessedLetters.includes(letter)) {
-        return "";
-        }
-
-        if (word.word.includes(letter)) {
-            return "correct";
-        }
-
-        return "wrong";
-    }
-
     return (
         <div className="keyboardContainer">
-            {alphabet.map(letter => (
-                <button
-                    key={letter}
-                    onClick={() => onLetterClick(letter)}
-                    disabled = {guessedLetters?.includes(letter)}
-                    className = {`letter ${getLetterClass(letter)}`}
-                >
+            {alphabet.map(letter => {
+                const status = getLetterStatus(letter)
+
+                return(
+                    <button
+                        key={letter}
+                        onClick={() => onLetterClick(letter)}
+                        disabled = {status !== "unused"}
+                        className = {`button ${status}`}
+                    >
                     {letter}
-                </button>
-            ))}
+                    </button>
+                )
+            })}
         </div>
     );
 }

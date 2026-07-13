@@ -1,19 +1,22 @@
 import { useState } from "react";
 import NavBar from '../components/NavBar'
 import Keyboard from "../components/Keyboard"
+import Board from "../components/Board";
 import { getWords } from '../utils/wordStorage'
 
 import '../gamePage.css'
 
 function GamePage() {
 
-    const [word] = useState(() => {
-        const words = getWords();
+    const [puzzle] = useState(() => {
+        const puzzles = getWords();
 
-        return words[
-            Math.floor(Math.random() * words.length)
+        return puzzles[
+            Math.floor(Math.random() * puzzles.length)
         ];
     });
+
+    const answer = puzzle?.word.split(" ")
 
     const [guessedLetters, setGuessedLetters] = useState([]);
 
@@ -29,34 +32,29 @@ function GamePage() {
         ]);
     }
 
-    function generatePassword(){
-        const answer = word?.word.split(" ")
+    function getLetterStatus(letter)
+    {
+        if (!guessedLetters.includes(letter)) {
+        return "unused";
+        }
 
-        return(
-            <div className="wordContainer">
-                {answer.map((singleWord, wordIndex) => (
-                    <div key={wordIndex} className="singleWord">
-                        {singleWord.split("").map((letter, letterIndex) => (
-                            <div key={letterIndex}>
-                                {guessedLetters.includes(letter)
-                                    ? letter
-                                    : "_"}
-                            </div>
-                        ))}
-                    </div>
-                ))}
-            </div>
-        )
+        return puzzle.word.includes(letter)
+            ? "correct"
+            : "wrong";
+    }
+
+    function isLetterGuessed(letter){
+        return guessedLetters.includes(letter)
     }
 
     return (
-        <>
-            <NavBar title={`Kategoria: ${word?.category}`} ></NavBar>
+        <div className="container">
+            <NavBar title={puzzle.category == "" ? "" : `Kategoria: ${puzzle?.category}`} ></NavBar>
 
-            {generatePassword()}
+            <Board answer={answer} isLetterGuessed={isLetterGuessed}/>
 
-            <Keyboard onLetterClick={guessLetter} guessedLetters={guessedLetters} word={word}/>
-        </>
+            <Keyboard onLetterClick={guessLetter} getLetterStatus={getLetterStatus}/>
+        </div>
     )
 }
 
