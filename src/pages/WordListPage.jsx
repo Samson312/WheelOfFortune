@@ -2,6 +2,8 @@ import { useState } from "react";
 import NavBar from '../components/NavBar'
 import { getWords, deleteWord } from '../utils/wordStorage'
 
+import '../styles/WordListPage.css'
+
 function WordListPage() {
   const [words, setWords] = useState(getWords());
 
@@ -13,18 +15,19 @@ function WordListPage() {
 
   return (
     <>
-      <NavBar title="Lista Słów" />
+      <NavBar title="Lista haseł" />
+        {words.map(word => (
+          <div className="listWrapper">
 
-      {words.map(word => (
-        <div key={word.id}>
-          <h1>{word.category}</h1>
-          <h1>{word.word}</h1>
+            <p className="category">Kategoria: {word.category}</p>
+            <p className="word">Hasło: {word.word}</p>
 
-          <button onClick={() => handleDelete(word.id)}>
-            Usuń słowo
-          </button>
-        </div>
-      ))}
+
+            <button className="delete" onClick={() => handleDelete(word.id)}>
+              Usuń hasło
+            </button>
+          </div>
+        ))}
     </>
   );
 }

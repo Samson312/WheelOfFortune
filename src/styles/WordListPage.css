@@ -1,0 +1,42 @@
+.listWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 5px;
+    padding: 0px 25px 25px 25px;
+}
+
+p{
+    margin: 0;
+}
+
+.category{
+    font-size: calc(20px + 1vw);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.word{
+    font-size: calc(10px + 1vw);
+}
+
+.delete{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 5px 10px;
+    font-size: 15px;
+    background: #2C3A5B;
+    border: 2px solid white;
+    cursor: pointer;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.delete:hover{
+    background-color: #3B82F6;
+    transform: scale(1.05);
+}
