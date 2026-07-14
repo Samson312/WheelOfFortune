@@ -4,7 +4,7 @@ import Keyboard from "../components/Keyboard"
 import Board from "../components/Board";
 import { getWords } from '../utils/wordStorage'
 
-import '../gamePage.css'
+import '../styles/GamePage.css'
 
 function GamePage() {
 
