@@ -1,22 +1,32 @@
 import { Link } from 'react-router-dom'
+import {getWords} from '../utils/wordStorage'
+
+import '../styles/Index.css'
 
 function Index() {
 
-  return (
-    <>
-        <Link to="/GamePage">
-            Zacznij Rozgrywkę
-        </Link>
+    const puzzles = getWords();
+    const hasWords = puzzles.length > 0;
 
-        <Link to="/WordListPage">
-            Lista Słów
-        </Link>
+    return (
+        <>
+            <div className='indexContainer'>
+                <h1>Koło fortuny</h1>
 
-        <Link to="/AddWordPage">
-            Dodaj Słowo
-        </Link>
-    </>
-  )
+                <Link className={`link ${hasWords ? '' : 'disabled'}`} to="/GamePage" style={hasWords ? null : {pointerEvents: "none"}}>
+                    Zacznij rozgrywkę
+                </Link>
+
+                <Link className='link' to="/WordListPage">
+                    Lista haseł
+                </Link>
+
+                <Link className='link' to="/AddWordPage">
+                    Dodaj hasło
+                </Link>
+            </div>
+        </>
+    )
 }
 
 
