@@ -20,11 +20,21 @@ function GamePage() {
 
     const [guessedLetters, setGuessedLetters] = useState([]);
 
+    const [disabled, setDisabled] = useState(false)
+
     function guessLetter(letter) {
 
         if (guessedLetters.includes(letter)) {
             return;
         }
+
+        const letterCount = [...puzzle.word].filter(l => l === letter).length;
+
+        setDisabled(true)
+
+        setTimeout(()=>{
+            setDisabled(false)
+        }, letterCount * 1000)
 
         setGuessedLetters([
             ...guessedLetters,
@@ -53,7 +63,7 @@ function GamePage() {
 
             <Board answer={answer} isLetterGuessed={isLetterGuessed}/>
 
-            <Keyboard onLetterClick={guessLetter} getLetterStatus={getLetterStatus}/>
+            <Keyboard onLetterClick={guessLetter} getLetterStatus={getLetterStatus} disabled={disabled} />
         </div>
     )
 }

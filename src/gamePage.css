@@ -1,3 +1,9 @@
+:root{
+    --animTime: 1s;
+    --tileBgColor: #abcddb;
+}
+
+
 .container{
     display: flex;
     flex-direction: column;
@@ -33,11 +39,32 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: lightblue;
-    border: 5px solid #2E3A59;
+    background-color: var(--tileBgColor);
+    border: 5px solid #24324D;
 
     width: calc(55px + 1vw);
     height: calc(70px + 1vw);
+}
+
+.tile.revealed{
+    animation: revealTile var(--animTime) ease-in-out forwards;
+}
+
+@keyframes revealTile{
+    0% {
+        background-color: var(--tileBgColor);
+        transform: scale(0.8);
+    }
+
+    50% {
+        background-color: #22C55E;
+        transform: scale(1.1);
+    }
+
+    100% {
+        background-color: var(--tileBgColor);
+        transform: scale(1);
+    }
 }
 
 .letter
@@ -48,12 +75,23 @@
 
 .visable
 {
-    visibility: visible;
+    opacity: 0;
+    animation: revealLetter var(--animTime) ease-in-out forwards;
+}
+
+@keyframes revealLetter{
+    from{
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+    }
 }
 
 .hidden
 {
-    visibility: hidden;
+    opacity: 0;
 }
 
 /* Keyboard */
@@ -74,17 +112,26 @@
     width: calc(60px + 1vw);
     height: calc(60px + 1vw);
     background-color: #24324D;
-    border: 2px solid white;
+    border: 3px solid white;
+    cursor: pointer;
 }
 
-.correct, .wrong{
-    color:black;
+.button:hover{
+    background-color: #3B82F6;
+    transform: scale(1.05);
+}
+
+.button:disabled{
+    pointer-events: none;
+    color: initial;
 }
 
 .correct {
-    background-color: #22C55E;
+    background-color: #275d46;
+    border-color: #3e8a67;
 }
 
 .wrong {
-    background-color: #EF4444;
+    background-color: #722b30;
+    border-color: #a64249;
 }

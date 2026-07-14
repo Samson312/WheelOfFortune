@@ -1,6 +1,6 @@
-function Keyboard({ onLetterClick, getLetterStatus }) {
+function Keyboard({ onLetterClick, getLetterStatus, disabled }) {
 
-    const alphabet = "AĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹŻ".split("");
+    const alphabet = "AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻ".split("");
 
     return (
         <div className="keyboardContainer">
@@ -11,7 +11,7 @@ function Keyboard({ onLetterClick, getLetterStatus }) {
                     <button
                         key={letter}
                         onClick={() => onLetterClick(letter)}
-                        disabled = {status !== "unused"}
+                        disabled = {status !== "unused" || disabled}
                         className = {`button ${status}`}
                     >
                     {letter}
