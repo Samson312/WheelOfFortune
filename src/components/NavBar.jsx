@@ -6,7 +6,7 @@ function NavBar({title}) {
   return (
     <div className='navbar'>
         <Link to="/" className='return'>
-            ←
+            ←Powrót
         </Link>
 
         <h1>{title}</h1>

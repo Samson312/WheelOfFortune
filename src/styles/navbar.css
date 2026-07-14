@@ -16,4 +16,9 @@ h1{
     position: absolute;
     left: 0;
     text-decoration: none;
+    font-size: 25px;
+}
+
+.return:visited, .return:active{
+    color: white;
 }
