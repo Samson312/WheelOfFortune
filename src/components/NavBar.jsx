@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom'
 
-import '../styles/navbar.css'
+import styles from '../styles/components/navbar.module.css'
 
 function NavBar({title}) {
   return (
-    <div className='navbar'>
-        <Link to="/" className='return'>
+    <div className={styles.navbar}>
+        <Link to="/" className={styles.return}>
             ←Powrót
         </Link>
 
-        <h1>{title}</h1>
+        <h1 className={styles.title}>{title}</h1>
     </div>
   )
 }

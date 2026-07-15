@@ -1,8 +1,8 @@
 import { useState } from "react";
-import NavBar from '../components/NavBar'
+import Navbar from '../components/Navbar'
 import { getWords, deleteWord } from '../utils/wordStorage'
 
-import '../styles/WordListPage.css'
+import styles from '../styles/pages/wordList.module.css'
 
 function WordListPage() {
   const [words, setWords] = useState(getWords());
@@ -14,21 +14,23 @@ function WordListPage() {
   }
 
   return (
-    <>
-      <NavBar title="Lista haseł" />
+    <div className={`page ${styles.container}`}>
+
+      <Navbar title="Lista haseł" />
         {words.map(word => (
-          <div className="listWrapper">
+          <div className={styles.listWrapper}>
 
-            <p className="category">Kategoria: {word.category}</p>
-            <p className="word">Hasło: {word.word}</p>
+            <p className={styles.category}>Kategoria: {word.category}</p>
+            <p className={styles.word}>Hasło: {word.word}</p>
 
 
-            <button className="delete" onClick={() => handleDelete(word.id)}>
+            <button className={`btn ${styles.delete}`} onClick={() => handleDelete(word.id)}>
               Usuń hasło
             </button>
           </div>
         ))}
-    </>
+        
+    </div>
   );
 }
 

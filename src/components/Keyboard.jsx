@@ -1,9 +1,11 @@
+import styles from '../styles/components/keyboard.module.css'
+
 function Keyboard({ onLetterClick, getLetterStatus, disabled }) {
 
     const alphabet = "AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻ".split("");
 
     return (
-        <div className="keyboardContainer">
+        <div className={styles.keyboard}>
             {alphabet.map(letter => {
                 const status = getLetterStatus(letter)
 
@@ -12,7 +14,7 @@ function Keyboard({ onLetterClick, getLetterStatus, disabled }) {
                         key={letter}
                         onClick={() => onLetterClick(letter)}
                         disabled = {status !== "unused" || disabled}
-                        className = {`button ${status}`}
+                        className = {`btn ${styles.button} ${status !== "unused" ? styles[status] : ""}`}
                     >
                     {letter}
                     </button>

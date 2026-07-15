@@ -1,11 +1,11 @@
-label{
+.formLabel{
     color: white;
     font-size: calc(50px + 1vw);
     margin-bottom: 10px;
     font-weight: 700;
 }
 
-form{
+.wordForm{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@ form{
     position: relative;
 }
 
-input, textarea{
+.inputField{
     width: 600px;
     height: 58px;
     background: #A9C7D8;
@@ -28,13 +28,13 @@ input, textarea{
     outline: none;
 }
 
-textarea{
+.wordInputField{
     height: 120px;
     resize: none;
     overflow: hidden;
 }
 
-.counter{
+.letterCount{
     position: absolute;
     right: 15px;
     top: 50%;
@@ -45,25 +45,10 @@ textarea{
     pointer-events: none;
 }
 
-button[type="submit"]{
+.submitBtn{
     margin-top: 30px;
-
     padding: 15px 40px;
-
     font-size: calc(24px + 1vw);
-
-    background: #2C3A5B;
-
-    color: white;
-
-    border: 4px solid white;
-
-    cursor: pointer;
-}
-
-button[type="submit"]:hover{
-    background-color: #3B82F6;
-    transform: scale(1.05);
 }
 
 .alert {
@@ -79,7 +64,7 @@ button[type="submit"]:hover{
     font-weight: bold;
 }
 
-.alert.show {
+.show {
     opacity: 1;
 }
 

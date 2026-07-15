@@ -1,14 +1,16 @@
-import Tile from "./Tile";
+import Tile from "./Tile.jsx";
+
+import styles from "../styles/components/board.module.css"
 
 function Board({ answer, isLetterGuessed }) {
 
     const revealOrder = {};
 
     return (
-        <div className="board">
-            {answer.map((singleWord, wordIndex) => (
-                <div key={wordIndex} className="singleWord">
-                    {singleWord.split("").map((letter, letterIndex) => {
+        <div className={styles.board}>
+            {answer.map((word, wordIndex) => (
+                <div key={wordIndex} className={styles.word}>
+                    {word.split("").map((letter, letterIndex) => {
                         
                         const revealDelay = revealOrder[letter] ?? 0;
                         revealOrder[letter] = revealDelay + 1;

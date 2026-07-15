@@ -1,8 +1,8 @@
 import { useState } from "react";
-import NavBar from '../components/NavBar';
+import Navbar from '../components/Navbar.jsx';
 import { addWord } from "../utils/wordStorage";
 
-import '../styles/AddWordPage.css'
+import styles from '../styles/pages/addWord.module.css'
 
 function AddWordPage() {
 
@@ -65,51 +65,53 @@ function AddWordPage() {
   }
 
   return (
-    <>
-      <NavBar title="Dodaj nowe hasło" />
+    <div className={`page ${styles.container}`}>
+      <Navbar title="Dodaj nowe hasło" />
 
-      <form onSubmit={handleSubmit}>
+      <form className={styles.wordForm} onSubmit={handleSubmit}>
 
-        <label>Kategoria</label>
+        <label className={styles.formLabel} >Kategoria</label>
 
-        <span className="inputWrapper">
+        <span className={styles.inputWrapper}>
           <input
+            className={styles.inputField}
             value={category}
             maxLength={MAX_CATEGORY_LENGTH}
             onChange={(e) => setCategory(e.target.value)}
             placeholder="owoc (opcjonalne)"
           />
-          <span className="counter">{category.length}/{MAX_CATEGORY_LENGTH}</span>
+          <span className={styles.letterCount}>{category.length}/{MAX_CATEGORY_LENGTH}</span>
         </span>
         
 
-        <label>Hasło</label>
+        <label className={styles.formLabel}>Hasło</label>
 
-        <span className="inputWrapper">
+        <span className={styles.inputWrapper}>
           <textarea
+            className={`${styles.inputField} ${styles.wordInputField}`}
             value={word}
             maxLength={MAX_WORD_LENGTH}
             onChange={(e) => setWord(e.target.value)}
             placeholder="jabłko"
           />
-          <span className="counter">{word.length}/{MAX_WORD_LENGTH}</span>
+          <span className={styles.letterCount}>{word.length}/{MAX_WORD_LENGTH}</span>
         </span>
         
 
-        <button type="submit">
+        <button className={`btn ${styles.submitBtn}`} type="submit">
           Dodaj
         </button>
 
         <span
-          className={`alert ${alert.visible ? "show" : ""} ${
-            alert.isError ? "error" : "success"
+          className={`${styles.alert} ${alert.visible ? styles.show : ""} ${
+            alert.isError ? styles.error : styles.success
           }`}
         >
           {alert.message}
         </span>
 
       </form>
-    </>
+    </div>
   )
 }
 

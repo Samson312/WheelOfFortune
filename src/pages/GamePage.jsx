@@ -1,10 +1,10 @@
 import { useState } from "react";
-import NavBar from '../components/NavBar'
+import Navbar from '../components/Navbar'
 import Keyboard from "../components/Keyboard"
 import Board from "../components/Board";
 import { getWords } from '../utils/wordStorage'
 
-import '../styles/GamePage.css'
+import styles from '../styles/pages/game.module.css'
 
 function GamePage() {
 
@@ -58,8 +58,8 @@ function GamePage() {
     }
 
     return (
-        <div className="container">
-            <NavBar title={puzzle.category == "" ? "" : `Kategoria: ${puzzle?.category}`} ></NavBar>
+        <div className={`page ${styles.container}`}>
+            <Navbar title={puzzle.category == "" ? "" : `Kategoria: ${puzzle?.category}`} ></Navbar>
 
             <Board answer={answer} isLetterGuessed={isLetterGuessed}/>
 
