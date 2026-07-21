@@ -11,7 +11,7 @@ export function addWord(word) {
   const words = getWords();
 
   words.push({
-        id: crypto.randomUUID(),
+        id: Math.floor(Math.random() * 1000000),
             ...word
         }
     );

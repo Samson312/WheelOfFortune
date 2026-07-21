@@ -5,27 +5,26 @@
     align-items: center;
     gap: 10px;
     margin-bottom: 50px;
-    width: 75%;
+    width: 90%;
 }
 
 .button {
-    padding: 10px;
-    font-size: calc(30px + 1vw);
-    width: calc(60px + 1vw);
-    height: calc(60px + 1vw);
+    font-size: var(--fs-keyboard);
+    width: clamp(50px, 4.5cqmax, 90px);
+    height: clamp(50px, 4.5cqmax, 90px);
 }
 
 .button:disabled{
     pointer-events: none;
-    color: initial;
+    color:white;
 }
 
 .button.correct {
-    background-color: #275d46;
-    border-color: #3e8a67;
+    background-color: var(--color-correct-bg);
+    border-color: var(--color-correct);
 }
 
 .button.wrong {
-    background-color: #722b30;
-    border-color: #a64249;
+    background-color: var(--color-wrong-bg);
+    border-color: var(--color-wrong);
 }

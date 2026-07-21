@@ -1,18 +1,13 @@
-:root{
-    --animTime: 1s;
-    --tileBgColor: #abcddb;
-}
-
 .letterTile
 {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--tileBgColor);
-    border: 5px solid #24324D;
+    background-color: var(--color-surface);
+    border: 5px solid var(--color-primary);
 
-    width: calc(55px + 1vw);
-    height: calc(70px + 1vw);
+    width: var(--tile-width);
+    height: var(--tile-height);
 }
 
 .revealed{
@@ -21,25 +16,25 @@
 
 @keyframes revealTile{
     0% {
-        background-color: var(--tileBgColor);
+        background-color: var(--color-surface);
         transform: scale(0.8);
     }
 
     50% {
-        background-color: #22C55E;
+        background-color: var(--color-correct);
         transform: scale(1.1);
     }
 
     100% {
-        background-color: var(--tileBgColor);
+        background-color: var(--color-surface);
         transform: scale(1);
     }
 }
 
 .letter
 {
-    font-size: calc(60px + 1vw);
-    color:black;
+    font-size: var(--fs-tile);
+    color:var(--color-text-muted);
 }
 
 .visible

@@ -1,28 +1,50 @@
 :root {
-  --bg: #16171d;
-  --border: #2e303a;
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: system-ui, 'Segoe UI', sans-serif;
 
-  --btn-primary: #2C3A5B;
+  --color-bg: #1c2233;
+  --color-border: #2e303a;
+  --color-surface: #abcddb;
 
+  --color-primary: #2C3A5B;
+  --color-primary-hover: #3B82F6;
 
-  font-family: var(--sans);
-  color-scheme: light dark;
-  background: var(--bg);
+  --color-correct: #22C55E;
+  --color-correct-bg: #275d46;
+
+  --color-wrong: #a64249;
+  --color-wrong-bg: #722b30;
+
+  --color-disabled-bg: #5A6478;
+  --color-disabled-text: #C5CAD3;
+
+  --color-text-muted: #111;
+
+  --tile-width : clamp(55px, 4cqmax, 90px);
+  --tile-height: clamp(70px, 5cqmax, 105px);
+
+  --fs-sm:  clamp(0.75rem, 1.5vw, 1.5rem); 
+  --fs-md:  clamp(1.125rem, 2vw, 2.5rem);    
+  --fs-lg:  clamp(3rem, 4vw, 4.5rem);
+
+  --fs-keyboard:    clamp(1.5rem, 4cqmax, 3rem);
+  --fs-tile: clamp(3rem,  4cqmax, 5rem);
+
+  --animTime: 1s;
 }
 
 body {
   margin: 0;
   height: 100vh;
+  color: white;
+  background: var(--color-bg);
+  font-family: var(--sans); 
 }
 
 #root {
-  min-width: 1000px;
-  width: 75vw;
-  max-width: 1500px;
+  width: min(90vw, 1500px);
   margin: 0 auto;
   text-align: center;
-  border-inline: 1px solid var(--border);
+  border-inline: 1px solid var(--color-border);
   height: 100%;
   box-sizing: border-box;
 }
@@ -49,7 +71,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--btn-primary);
+  background: var(--color-primary);
   color: white;
   border: 3px solid white;
   cursor: pointer;
@@ -57,6 +79,6 @@ body {
 }
 
 .btn:hover{
-  background-color: #3B82F6;
+  background-color: var(--color-primary-hover);
   transform: scale(1.05);
 }
